@@ -17,7 +17,15 @@
 					Bespeak
 				</h1>
 			</a>
-			<div class="md:hidden">
+			<div class="md:hidden flex items-center">
+				{#if stateNavbar}
+					<button
+						on:click={() => {
+							goto('/login');
+						}}
+						class="border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
+						>Login</button
+					>{/if}
 				<button
 					on:click={() => {
 						changeStateNavbar();
@@ -91,18 +99,8 @@
 			on:click={() => {
 				goto('/login');
 			}}
-			class=" border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
+			class="hidden md:block border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
 			>Login</button
 		>
-		<!-- <div
-			class="border-2 border-black rounded-lg p-2 hidden md:inline-block transition ease-in-out delay-150 hover:-translate-y-1 hover:text-transparent border-clip-text border-gradient-to-r from-[#8B0000] to-[#000000] duration-300"
-		>
-			<a
-				href="/"
-				class="font-bold transition ease-in-out delay-150 hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000] duration-300"
-			>
-				Login
-			</a>
-		</div> -->
 	</div>
 </nav>

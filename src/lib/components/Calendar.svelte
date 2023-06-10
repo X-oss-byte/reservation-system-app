@@ -26,7 +26,14 @@
 	$: dayToShow, currentDay.set(dayToShow);
 </script>
 
-<div class="drop-shadow-4xl max-w-screen-xl mx-auto container p-4 rounded-md mt-5">
+<div class="flex justify-center mt-20 mb-20">
+	<h1
+		class="font-extrabold text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
+	>
+		Bespeak
+	</h1>
+</div>
+<div class="shadow-3xl border rounded-lg max-w-screen-xl mx-auto container p-4 mb-32 mt-5">
 	<div class="flex justify-between">
 		<button
 			on:click={() => {

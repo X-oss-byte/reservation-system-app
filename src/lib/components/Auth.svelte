@@ -1,3 +1,7 @@
+<script>
+	import { goto } from '$app/navigation';
+</script>
+
 <div class="shadow-3xl border rounded-lg max-w-sm w-full my-64 text-gray-600 mx-auto">
 	<div class=" rounded-lg p-8 space-y-8">
 		<div class=" text-center">
@@ -20,6 +24,9 @@
 		</div>
 		<div class="space-y-4 text-sm font-medium">
 			<button
+				on:click={() => {
+					goto('/user');
+				}}
 				class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 			>
 				<div class="grayscale hover:grayscale-0">
@@ -52,6 +59,9 @@
 				Continue with Google
 			</button>
 			<button
+				on:click={() => {
+					goto('/user');
+				}}
 				class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 			>
 				<div class="grayscale hover:grayscale-0">

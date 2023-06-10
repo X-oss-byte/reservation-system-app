@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import { navigationStore } from '$lib/stores/PageStore';
 	let stateNavbar: boolean = false;
 	const changeStateNavbar = () => {
 		stateNavbar = !stateNavbar;
@@ -54,25 +56,42 @@
 					<li
 						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000] duration-500"
 					>
-						<a href="/"> Home </a>
+						<button
+							on:click={() => {
+								navigationStore.set({ index: 0, page: 'home' });
+								goto('/home');
+							}}>Home</button
+						>
 					</li>
-
 					<li
 						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#8B0000] duration-500"
 					>
-						<a href="/"> About </a>
+						<button
+							on:click={() => {
+								navigationStore.set({ index: 1, page: 'about' });
+								goto('/about');
+							}}>About</button
+						>
 					</li>
 					<li
 						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000] duration-500"
 					>
-						<a href="/"> Vision </a>
+						<button
+							on:click={() => {
+								navigationStore.set({ index: 2, page: 'vision' });
+								goto('/vision');
+							}}>Vision</button
+						>
 					</li>
 				</ul>
 			</div>
 		{/if}
 
 		<button
-			class=" border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold rounded-lg bg-white hover:-translate-y hover:text-white hover:bg-black"
+			on:click={() => {
+				goto('/login');
+			}}
+			class=" border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
 			>Login</button
 		>
 		<!-- <div

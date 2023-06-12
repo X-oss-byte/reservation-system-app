@@ -25,7 +25,8 @@
 						}}
 						class="border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
 						>Login</button
-					>{/if}
+					>
+				{/if}
 				<button
 					on:click={() => {
 						changeStateNavbar();

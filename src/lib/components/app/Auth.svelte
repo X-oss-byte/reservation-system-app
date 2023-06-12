@@ -2,15 +2,17 @@
 	import { goto } from '$app/navigation';
 </script>
 
-<div class="shadow-3xl border rounded-lg max-w-sm w-full my-64 text-gray-600 mx-auto">
+<div class="shadow-3xl border rounded-lg max-w-sm w-full my-20 sm:my-64 text-gray-600 mx-auto">
 	<div class=" rounded-lg p-8 space-y-8">
 		<div class=" text-center">
 			<div class="flex justify-center mb-20">
-				<h1
-					class="font-extrabold text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
+				<a href="/home">
+					<h1
+						class="font-extrabold text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
+					>
+						Bespeak
+					</h1></a
 				>
-					Bespeak
-				</h1>
 			</div>
 			<div class="mt-5 space-y-2">
 				<h3 class="text-gray-800 text-2xl font-bold sm:text-3xl">Log in to your account</h3>
@@ -25,7 +27,7 @@
 		<div class="space-y-4 text-sm font-medium">
 			<button
 				on:click={() => {
-					goto('/user');
+					goto('/profile');
 				}}
 				class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 			>
@@ -60,7 +62,7 @@
 			</button>
 			<button
 				on:click={() => {
-					goto('/user');
+					goto('/profile');
 				}}
 				class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 			>

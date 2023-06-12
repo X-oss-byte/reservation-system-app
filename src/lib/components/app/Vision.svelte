@@ -40,7 +40,7 @@
 						<div class="mt-2 mx-auto sm:flex">
 							<div class="mt-2 mx-auto sm:mt-0">
 								<ul class="flex justify-center space-x-4">
-									<div class="grayscale hover:grayscale-0">
+									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
 											<a href="/">
 												<img
@@ -50,21 +50,21 @@
 											</a>
 										</li>
 									</div>
-									<div class="grayscale hover:grayscale-0">
+									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
 											<a href="/">
 												<img alt="" src="https://cdn.cdnlogo.com/logos/t/96/twitter-icon.svg" />
 											</a>
 										</li>
 									</div>
-									<div class="grayscale hover:grayscale-0">
+									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
 											<a href="/">
 												<img alt="" src="https://www.svgrepo.com/show/110195/linkedin.svg" />
 											</a>
 										</li>
 									</div>
-									<div class="grayscale hover:grayscale-0">
+									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
 											<a href="/">
 												<img

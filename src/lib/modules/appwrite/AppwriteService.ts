@@ -15,7 +15,7 @@ export const AppwriteLoginServices = {
 			console.log(`${redirectUrl.split('/', 3)[2]}/profile`);
 			console.log(redirectUrl);
 		} else {
-			letFinalRedirect = `htpps://${redirectUrl.split('/', 3)[2]}/profile`;
+			letFinalRedirect = `https://www.bespeak.site/profile`;
 		}
 		let user = await account.createOAuth2Session(provider, letFinalRedirect);
 		console.log(user);

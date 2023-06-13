@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { AppwriteLoginServices } from '$lib/modules/appwrite/AppwriteService';
+	import { User } from '$lib/stores/AppwriteStore';
 	import { navigationStore } from '$lib/stores/PageStore';
 	let stateNavbar: boolean = false;
+	let user: any;
+	User.subscribe((value) => {
+		user = value;
+	});
 	const changeStateNavbar = () => {
 		stateNavbar = !stateNavbar;
 	};
@@ -30,7 +35,8 @@
 				on:click={() => {
 					goto('/profile');
 				}}
-				class="hidden sm:block font-bold">Matus Fercak</button
+				class="hidden sm:block font-bold"
+				>{user ? (user.name.length == 0 ? user.email : user.name) : 'No name.'}</button
 			>
 			<div class="hidden sm:block border py-5 mx-3" />
 			<button

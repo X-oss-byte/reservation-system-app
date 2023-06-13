@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { AppwriteLoginServices } from '$lib/modules/appwrite/AppwriteService';
 	import { navigationStore } from '$lib/stores/PageStore';
 	let stateNavbar: boolean = false;
 	const changeStateNavbar = () => {
@@ -34,7 +35,7 @@
 			<div class="hidden sm:block border py-5 mx-3" />
 			<button
 				on:click={() => {
-					goto('/login');
+					AppwriteLoginServices.logout();
 				}}
 				class="hidden md:block border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-white font-bold bg-black hover:-translate-y hover:bg-gray-900"
 				>Logout</button
@@ -95,7 +96,7 @@
 			<div class="hidden sm:block border py-5 mx-3" />
 			<button
 				on:click={() => {
-					goto('/login');
+					AppwriteLoginServices.logout();
 				}}
 				class=" border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-white font-bold bg-black hover:-translate-y hover:bg-gray-900"
 				>Logout</button

@@ -19,7 +19,7 @@
 						<input
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="John Name"
 						/>
 					</div>
@@ -29,7 +29,7 @@
 						<input
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="+421948 999 111"
 						/>
 					</div>
@@ -40,7 +40,7 @@
 							<select
 								id="countries"
 								placeholder="sesdd"
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-gray-400 block w-full p-2.5"
+								class="bg-gray-50 border form-select border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-gray-400 block w-full p-2.5"
 							>
 								<option disabled>Choose a country</option>
 								<option value="US">Elit Barber Kosice</option>
@@ -48,6 +48,58 @@
 							</select>
 						</div>
 					</div>
+					<div class="w-full grid grid-cols-2 gap-2">
+						<div class="w-full border border-gray-300 mt-2 p-5 bg-white rounded-lg shadow-xl">
+							<div class="flex justify-between">
+								<select name="hours" class="bg-transparent text-xl appearance-none outline-none">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">10</option>
+									<option value="12">12</option>
+								</select>
+								<span class="text-xl mx-3">:</span>
+								<select name="minutes" class=" bg-transparent text-xl appearance-none outline-none">
+									<option value="0">00</option>
+									<option value="30">30</option>
+								</select>
+							</div>
+						</div>
+						<div class="border border-gray-300 mt-2 p-5 w-full bg-white rounded-lg shadow-xl">
+							<div class="flex justify-center">
+								<select name="hours" class="bg-transparent text-xl appearance-none outline-none">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+									<option value="9">9</option>
+									<option value="10">10</option>
+									<option value="11">10</option>
+									<option value="12">12</option>
+								</select>
+								<span class="text-xl mr-3">:</span>
+								<select
+									name="minutes"
+									class=" bg-transparent text-xl appearance-none outline-none mr-4"
+								>
+									<option value="0">00</option>
+									<option value="30">30</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
 					<div class="w-full">
 						<div class="grid grid-cols-7 justify-items-center">
 							<div class="font-extrabold">SU</div>
@@ -84,6 +136,7 @@
 							/>
 						</div>
 					</div>
+
 					<button
 						class="border-2 w-full border-black rounded-lg p-1 px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
 						>Add Item</button

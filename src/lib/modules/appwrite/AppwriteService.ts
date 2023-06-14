@@ -1,5 +1,6 @@
-import { Client, Account, Databases } from 'appwrite';
+import { Client, Account, Databases, ID, Query } from 'appwrite';
 import { User } from '../../stores/AppwriteStore';
+import { FleetStore } from '../../stores/AppStore';
 import { goto } from '$app/navigation';
 
 const client = new Client().setEndpoint('https://appwrite.bespeak.site/v1').setProject('bespeak');
@@ -41,6 +42,41 @@ export const AppwriteAuthServices = {
 };
 
 export const AppwriteDocumentService = {
-    createFleet: async ()=>{}
-    createItem: async ()=>{}
-}
+	createFleet: async (data) => {
+		const promise = await databases.createDocument('main', 'calendars', ID.unique(), data);
+		goto('/admin/fleets');
+		return promise;
+	},
+	listFleet: async () => {
+		const user = await account.get();
+		const promise = await databases.listDocuments('main', 'calendars', [
+			Query.equal('userId', user.$id),
+			Query.limit(100),
+			Query.offset(0)
+		]);
+		return promise.documents;
+	},
+	listItem: async () => {
+		const user = await account.get();
+		const promise = await databases.listDocuments('main', 'calendarSlotTypes', [
+			Query.equal('userId', user.$id),
+			Query.limit(100),
+			Query.offset(0)
+		]);
+		return promise.documents;
+	},
+	getFleet: async (fleetID) => {
+		const promise = await databases.getDocument('main', 'calendars', fleetID);
+		return promise;
+	},
+	deleteFleet: async (fleetID) => {
+		const promise = await databases.deleteDocument('main', 'calendars', fleetID);
+		goto('/admin/fleets');
+		return promise;
+	},
+	updateFleet: async (fleetID, data) => {
+		const promise = await databases.updateDocument('main', 'calendars', fleetID, data);
+		goto('/admin/fleets');
+		return promise;
+	}
+};

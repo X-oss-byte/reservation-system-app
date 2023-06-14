@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { AppwriteDocumentService } from '$lib/modules/appwrite/AppwriteService';
+
 	let toDelete = false;
+	export let fleet: any;
 </script>
 
 {#if toDelete}
@@ -10,11 +13,6 @@
 				<div class="mt-3">
 					<div class="mt-2 text-center">
 						<h4 class="text-lg font-bold text-gray-800">Do you want remove this fleet?</h4>
-						<!-- <p class="mt-2 text-[15px] leading-relaxed text-gray-500">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Nunc eget lorem dolor sed viverra ipsum
-							nunc. Consequat id porta nibh venenatis.
-						</p> -->
 					</div>
 				</div>
 				<div class="items-center gap-2 mt-3 sm:flex">
@@ -28,6 +26,7 @@
 					</button>
 					<button
 						on:click={() => {
+							AppwriteDocumentService.deleteFleet(fleet.$id);
 							toDelete = false;
 						}}
 						class="w-full mt-2 p-2.5 flex-1 text-white bg-[#8B0000] hover:bg-[#8b0000ab] rounded-md outline-none ring-offset-2 ring-[#8b0000ab] focus:ring-2"
@@ -59,9 +58,10 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Name fleet</label>
 
 						<input
+							bind:value={fleet.name}
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="form-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="Name"
 						/>
 					</div>
@@ -74,6 +74,9 @@
 							>Remove Fleet
 						</button>
 						<button
+							on:click={() => {
+								AppwriteDocumentService.updateFleet(fleet.$id, { name: fleet.name });
+							}}
 							class="border-2 p-2 w-full rounded-lg px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
 							>Update Fleet
 						</button>

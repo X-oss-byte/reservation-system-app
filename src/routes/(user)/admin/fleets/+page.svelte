@@ -1,5 +1,6 @@
 <script>
-	import ListFleets from '$lib/components/user/admin/AdminListFleets.svelte';
+	import AdminListFleets from '$lib/components/user/admin/AdminListFleets.svelte';
+	export let data;
 </script>
 
-<ListFleets />
+<AdminListFleets fleets={data.fleets} />

@@ -1,3 +1,13 @@
+<script lang="ts">
+	import { AppwriteDocumentService } from '$lib/modules/appwrite/AppwriteService';
+	import { User } from '$lib/stores/AppwriteStore';
+
+	let data: { name: string | undefined; userId: string | undefined } = {
+		name: undefined,
+		userId: $User ? $User['$id'] : undefined
+	};
+</script>
+
 <section>
 	<div class=" max-w-screen-sm mx-auto px-4 pb-28 gap-12 text-gray-600 md:px-8">
 		<div class="max-w-screen-lg mx-auto mb-5">
@@ -17,13 +27,18 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Name fleet</label>
 
 						<input
+							bind:value={data.name}
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="form-input bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="Name"
 						/>
 					</div>
 					<button
+						disabled={data.name == undefined || data.name.length == 0}
+						on:click={() => {
+							AppwriteDocumentService.createFleet(data);
+						}}
 						class="border-2 w-full border-black rounded-lg p-1 px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
 						>Add Fleet</button
 					>

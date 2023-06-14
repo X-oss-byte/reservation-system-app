@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { AppwriteLoginServices } from '$lib/modules/appwrite/AppwriteService';
+	import { AppwriteAuthServices } from '$lib/modules/appwrite/AppwriteService';
 	import { User } from '$lib/stores/AppwriteStore';
 	import { navigationStore } from '$lib/stores/PageStore';
 	let stateNavbar: boolean = false;
@@ -41,7 +41,7 @@
 			<div class="hidden sm:block border py-5 mx-3" />
 			<button
 				on:click={() => {
-					AppwriteLoginServices.logout();
+					AppwriteAuthServices.logout();
 				}}
 				class="hidden md:block border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-white font-bold bg-black hover:-translate-y hover:bg-gray-900"
 				>Logout</button
@@ -102,7 +102,7 @@
 			<div class="hidden sm:block border py-5 mx-3" />
 			<button
 				on:click={() => {
-					AppwriteLoginServices.logout();
+					AppwriteAuthServices.logout();
 				}}
 				class=" border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-white font-bold bg-black hover:-translate-y hover:bg-gray-900"
 				>Logout</button

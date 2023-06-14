@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { AppwriteLoginServices } from '$lib/modules/appwrite/AppwriteService';
+	import { AppwriteAuthServices } from '$lib/modules/appwrite/AppwriteService';
 </script>
 
 <div class=" max-w-sm p-4 mx-auto">
@@ -30,7 +30,7 @@
 			<div class="space-y-4 text-sm font-medium">
 				<button
 					on:click={() => {
-						AppwriteLoginServices.login('google', window.location.href);
+						AppwriteAuthServices.login('google', window.location.href);
 					}}
 					class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 				>
@@ -65,7 +65,7 @@
 				</button>
 				<button
 					on:click={() => {
-						AppwriteLoginServices.login('github', window.location.href);
+						AppwriteAuthServices.login('github', window.location.href);
 					}}
 					class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 				>

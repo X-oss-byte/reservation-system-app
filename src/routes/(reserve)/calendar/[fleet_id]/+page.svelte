@@ -1,5 +1,6 @@
 <script>
 	import ItemSelect from '$lib/components/reservation/ItemSelect.svelte';
+	export let data;
 </script>
 
-<ItemSelect/>
+<ItemSelect items={data.items} />

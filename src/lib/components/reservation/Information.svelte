@@ -65,57 +65,59 @@
 </div>
 
 <section>
-	<div
-		class="shadow-2xl max-w-screen-sm mx-auto border rounded-lg p-4 mt-10 mb-20 gap-12 text-gray-600"
-	>
-		<div class="flex gap-4">
-			<div class="w-full">
-				<label for="" class=" text-sm font-bold text-gray-900">Name</label>
-
-				<input
-					type="text"
-					id="input-group-1"
-					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
-					placeholder="John Name"
-				/>
-			</div>
-			<div class="w-full">
-				<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
-
-				<input
-					type="text"
-					id="input-group-1"
-					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
-					placeholder="+421948 999 111"
-				/>
-			</div>
-		</div>
-		<div class="w-full">
-			<label for="" class=" text-sm font-bold text-gray-900">Email</label>
-
-			<input
-				type="text"
-				id="input-group-1"
-				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
-				placeholder="john.name@gmail.com"
-			/>
-		</div>
-		<div class="w-full">
-			<label for="" class=" text-sm font-bold text-gray-900">Note</label>
-
-			<input
-				type="text"
-				id="input-group-1"
-				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
-				placeholder="I'm excited"
-			/>
-		</div>
-		<button
-			on:click={() => {
-				goto('/calendar/111/12032023/1234/final');
-			}}
-			class="border-2 w-full border-black rounded-lg p-1 mt-4 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
-			>Create reservation</button
+	<div class=" max-w-screen-md mx-auto px-4 pb-16 mt-10 gap-12 text-gray-600 md:px-8">
+		<div
+			class="shadow-2xl max-w-screen-sm mx-auto border rounded-lg p-4 mt-10 mb-20 gap-12 text-gray-600"
 		>
+			<div class="flex gap-4">
+				<div class="w-full">
+					<label for="" class=" text-sm font-bold text-gray-900">Name</label>
+
+					<input
+						type="text"
+						id="input-group-1"
+						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+						placeholder="John Name"
+					/>
+				</div>
+				<div class="w-full">
+					<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
+
+					<input
+						type="text"
+						id="input-group-1"
+						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+						placeholder="+421948 999 111"
+					/>
+				</div>
+			</div>
+			<div class="w-full">
+				<label for="" class=" text-sm font-bold text-gray-900">Email</label>
+
+				<input
+					type="text"
+					id="input-group-1"
+					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+					placeholder="john.name@gmail.com"
+				/>
+			</div>
+			<div class="w-full">
+				<label for="" class=" text-sm font-bold text-gray-900">Note</label>
+
+				<input
+					type="text"
+					id="input-group-1"
+					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+					placeholder="I'm excited"
+				/>
+			</div>
+			<button
+				on:click={() => {
+					goto('/calendar/111/12032023/1234/final');
+				}}
+				class="border-2 w-full border-black rounded-lg p-1 mt-4 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
+				>Create reservation</button
+			>
+		</div>
 	</div>
 </section>

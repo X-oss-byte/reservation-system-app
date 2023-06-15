@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
-
+	import { page } from '$app/stores';
+	export let items: any = [];
 	let currentStep = 1;
 	const steps = [{ item: 'What' }, { item: 'When' }, { item: 'Who' }];
 </script>
@@ -67,39 +68,19 @@
 <section>
 	<div class=" max-w-screen-md mx-auto px-4 pb-28 mt-10 gap-12 text-gray-600 md:px-8">
 		<ul class=" grid gap-4 sm:grid-cols-2">
-			<button
-				on:click={() => {
-					goto('/calendar/111/new');
-				}}
-				class="transition ease-in-out delay-150 py-5 w-full shadow-xl border rounded-lg hover:-translate-y-1 hover:shadow-3xl duration-300"
-			>
-				<span class="font-extrabold text-2xl text-transparent bg-clip-text bg-black">
-					Matus Fercak
-				</span>
-				<div class="flex justify-center mt-4">Elit Barber Kosice</div>
-			</button>
-			<button
-				on:click={() => {
-					goto('/calendar/111/new');
-				}}
-				class="transition ease-in-out delay-150 py-5 w-full shadow-xl border rounded-lg hover:-translate-y-1 hover:shadow-3xl duration-300"
-			>
-				<span class="font-extrabold text-2xl text-transparent bg-clip-text bg-black">
-					Matus Fercak
-				</span>
-				<div class="flex justify-center mt-4">Elit Barber Kosice</div>
-			</button>
-			<button
-				on:click={() => {
-					goto('/calendar/111/new');
-				}}
-				class="transition ease-in-out delay-150 py-5 w-full shadow-xl border rounded-lg mb-10 hover:-translate-y-1 hover:shadow-3xl duration-300"
-			>
-				<span class="font-extrabold text-2xl text-transparent bg-clip-text bg-black">
-					Matus Fercak
-				</span>
-				<div class="flex justify-center mt-4">Elit Barber Kosice</div>
-			</button>
+			{#each items as item}
+				<button
+					on:click={() => {
+						goto(`/calendar/${$page.params.fleet_id}/${item.$id}`);
+					}}
+					class="transition ease-in-out delay-150 py-5 w-full shadow-xl border rounded-lg hover:-translate-y-1 hover:shadow-3xl duration-300"
+				>
+					<span class="font-extrabold text-2xl text-transparent bg-clip-text bg-black">
+						{item.name}
+					</span>
+					<div class="flex justify-center mt-4">{item.calendarName}</div>
+				</button>
+			{/each}
 		</ul>
 	</div>
 </section>

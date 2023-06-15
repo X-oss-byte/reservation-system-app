@@ -1,5 +1,30 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { AppwriteDocumentService } from '$lib/modules/appwrite/AppwriteService';
 	let toDelete = false;
+
+	export let fleets: any = [];
+	export let item: any;
+	let selectFleet: any;
+	console.log(item);
+	let data: any = {
+		name: item.name,
+		allowMon: item.allowMon,
+		allowTue: item.allowTue,
+		allowWed: item.allowWed,
+		allowThu: item.allowThu,
+		allowFri: item.allowFri,
+		allowSat: item.allowSat,
+		allowSun: item.allowSun,
+		calendarId: item.calendarId,
+		phone: item.phone,
+		userId: item.userId,
+		calendarName: item.calendarName
+	};
+
+	$: data.calendarName = selectFleet ? selectFleet.name : undefined;
+	$: data.userId = selectFleet ? selectFleet.userId : undefined;
+	$: data.calendarId = selectFleet ? selectFleet.$id : undefined;
 </script>
 
 {#if toDelete}
@@ -10,11 +35,6 @@
 				<div class="mt-3">
 					<div class="mt-2 text-center">
 						<h4 class="text-lg font-bold text-gray-800">Do you want remove this Item?</h4>
-						<!-- <p class="mt-2 text-[15px] leading-relaxed text-gray-500">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Nunc eget lorem dolor sed viverra ipsum
-							nunc. Consequat id porta nibh venenatis.
-						</p> -->
 					</div>
 				</div>
 				<div class="items-center gap-2 mt-3 sm:flex">
@@ -28,6 +48,7 @@
 					</button>
 					<button
 						on:click={() => {
+							AppwriteDocumentService.deleteItem($page.params.item_id);
 							toDelete = false;
 						}}
 						class="w-full mt-2 p-2.5 flex-1 text-white bg-[#8B0000] hover:bg-[#8b0000ab] rounded-md outline-none ring-offset-2 ring-[#8b0000ab] focus:ring-2"
@@ -59,9 +80,10 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Name item</label>
 
 						<input
+							bind:value={data.name}
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="John Name"
 						/>
 					</div>
@@ -69,9 +91,10 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
 
 						<input
+							bind:value={data.phone}
 							type="text"
 							id="input-group-1"
-							class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+							class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 							placeholder="+421948 999 111"
 						/>
 					</div>
@@ -80,16 +103,19 @@
 							<label for="countries" class=" text-sm font-bold text-gray-900">Select an Fleet</label
 							>
 							<select
+								bind:value={selectFleet}
 								id="countries"
 								placeholder="sesdd"
-								class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-gray-400 block w-full p-2.5"
+								class="bg-gray-50 border form-select border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-black focus:border-gray-400 block w-full p-2.5"
 							>
 								<option disabled>Choose a country</option>
-								<option value="US">Elit Barber Kosice</option>
-								<option value="CA">Elit Barber Presov</option>
+								{#each fleets as fleet}
+									<option value={fleet}>{fleet.name}</option>
+								{/each}
 							</select>
 						</div>
 					</div>
+
 					<div class="w-full">
 						<div class="grid grid-cols-7 justify-items-center">
 							<div class="font-extrabold">SU</div>
@@ -98,29 +124,37 @@
 							<div class="font-extrabold">WE</div>
 							<div class="font-extrabold">TH</div>
 							<div class="font-extrabold">FR</div>
-							<div class="font-extrabold">SU</div>
+							<div class="font-extrabold">SA</div>
 						</div>
 						<div class="pt-1 grid grid-cols-7 justify-items-center">
 							<input
+								bind:checked={data.allowSun}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/>
 							<input
+								bind:checked={data.allowMon}
+								type="checkbox"
+								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
+							/>
+							<input
+								bind:checked={data.allowTue}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/><input
+								bind:checked={data.allowWed}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/><input
+								bind:checked={data.allowThu}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/><input
+								bind:checked={data.allowFri}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/><input
-								type="checkbox"
-								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
-							/><input
+								bind:checked={data.allowSat}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/>
@@ -135,6 +169,9 @@
 							>Remove Item
 						</button>
 						<button
+							on:click={() => {
+								AppwriteDocumentService.updateItem($page.params.item_id, data);
+							}}
 							class="border-2 p-2 w-full rounded-lg px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
 							>Update Item
 						</button>

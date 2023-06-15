@@ -35,7 +35,7 @@
 							<h4 class="text-xl text-gray-800 font-semibold">{fleet.name}</h4>
 
 							<p class="text-gray-600 text-sm">
-								<a href="/calendar/111">Share Url: https://bespeak.site/calendar/. . .</a>
+								<a href="/calendar/{fleet.$id}/login">https://bespeak.site/calendar/. . .</a>
 							</p>
 						</div>
 						<div>

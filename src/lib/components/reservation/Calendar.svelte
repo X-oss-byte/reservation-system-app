@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { daysConst, monthNames } from '../../modules/constant';
+	import { dayWeekTranslate, daysConst, monthNames } from '../../modules/constant';
 	import { CalendarGenerator } from '../../modules/calendarGenerator';
 	import { currentDay } from '../../modules/stores';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	export let item: any;
 
 	let currentStep = 2;
 	const steps = [{ item: 'What' }, { item: 'When' }, { item: 'Who' }];
@@ -91,6 +94,16 @@
 
 <section>
 	<div class=" max-w-screen-md mx-auto px-4 pb-16 mt-10 gap-12 text-gray-600 md:px-8">
+		<div class="drop-shadow-2xl">
+			<button
+				on:click={() => {
+					goto(`/calendar/${item.calendarId}`);
+				}}
+				class="drop-shadow-xl w-full p-2 bg-black rounded-lg text-white font-bold"
+				>{item.calendarName} - {item.name}</button
+			>
+		</div>
+
 		<div
 			class="shadow-3xl border border-lg rounded-lg max-w-screen-xl mx-auto container p-4 mb-10 mt-5"
 		>
@@ -160,28 +173,40 @@
 					{#if day.inCurrentMonth}
 						{#if !day.past}
 							<button
-								on:click={() => {
-									goto('/calendar/111/12032023/new');
-								}}
-								class="font-bold h-12 md:h-16 lg:h-16 hover:bg-slate-300 bg-gray-400 border border-gray-800 flex w-full items-center justify-center {borderRadius}"
+								disabled={true}
+								class="font-bold h-12 md:h-16 lg:h-16 hover:bg-[#8080806b] bg-[#80808091] border border-gray-800 flex w-full items-center justify-center {borderRadius}"
 							>
 								{day.dayNumber}
 							</button>
+						{:else if item[`${dayWeekTranslate[day.dayIndex]}`]}
+							{#if !item.reservedDates.includes(day.daID)}
+								<button
+									on:click={() => {
+										goto(`/calendar/${$page.params.fleet_id}/${$page.params.item_id}/${day.dayID}`);
+									}}
+									class="font-bold h-12 md:h-16 lg:h-16 hover:bg-[#97bd9d65] bg-[#97bd9d9c] border border-gray-800 flex w-full items-center justify-center {borderRadius}"
+								>
+									{day.dayNumber}
+								</button>
+							{:else}
+								<button
+									disabled={true}
+									class="font-bold h-12 md:h-16 lg:h-16 hover:bg-[#89303058] bg-[#89303075] border border-gray-800 flex w-full items-center justify-center {borderRadius}"
+								>
+									{day.dayNumber}
+								</button>
+							{/if}
 						{:else}
 							<button
-								on:click={() => {
-									goto('/calendar/111/12032023/new');
-								}}
-								class="font-bold h-12 md:h-16 lg:h-16 hover:bg-slate-300 bg-gray-50 border border-gray-800 flex w-full items-center justify-center {borderRadius}"
+								disabled={true}
+								class="font-bold h-12 md:h-16 lg:h-16 hover:bg-[#80808032] bg-gray-50 border border-gray-800 flex w-full items-center justify-center {borderRadius}"
 							>
 								{day.dayNumber}
 							</button>
 						{/if}
 					{:else}
 						<button
-							on:click={() => {
-								goto('/calendar/111/12032023/new');
-							}}
+							disabled={true}
 							class=" h-12 md:h-24 lg:h-16 hover:bg-gray-700 hover:text-gray-400 bg-gray-800 text-gray-300 font-bold border border-gray-800 flex w-full items-center justify-center {borderRadius}"
 						>
 							{day.dayNumber}

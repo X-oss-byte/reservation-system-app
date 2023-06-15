@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { AppwriteDocumentService } from '$lib/modules/appwrite/AppwriteService';
+
 	export let fleets: any = [];
 	let selectFleet: any;
 	let data: any = {
@@ -84,9 +86,14 @@
 							<div class="font-extrabold">WE</div>
 							<div class="font-extrabold">TH</div>
 							<div class="font-extrabold">FR</div>
-							<div class="font-extrabold">SU</div>
+							<div class="font-extrabold">SA</div>
 						</div>
 						<div class="pt-1 grid grid-cols-7 justify-items-center">
+							<input
+								bind:checked={data.allowSun}
+								type="checkbox"
+								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
+							/>
 							<input
 								bind:checked={data.allowMon}
 								type="checkbox"
@@ -112,10 +119,6 @@
 								bind:checked={data.allowSat}
 								type="checkbox"
 								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
-							/><input
-								bind:checked={data.allowSun}
-								type="checkbox"
-								class="form-checkbox border-2 rounded-md text-black h-5 w-5 focus:outline-black dark:focus:ring-red-600 dark:ring-offset-gray-800 focus:ring-2"
 							/>
 						</div>
 					</div>
@@ -125,6 +128,9 @@
 							data.name.length == 0 ||
 							data.phone == undefined ||
 							data.phone.length < 10}
+						on:click={() => {
+							AppwriteDocumentService.createItem(data);
+						}}
 						class="border-2 w-full border-black rounded-lg p-1 px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
 						>Add Item</button
 					>

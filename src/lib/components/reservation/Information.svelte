@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import { goto } from '$app/navigation';
-
+	import { page } from '$app/stores';
+	export let item: any;
 	let currentStep = 3;
 	const steps = [{ item: 'What' }, { item: 'When' }, { item: 'Who' }];
 </script>
@@ -66,17 +67,40 @@
 
 <section>
 	<div class=" max-w-screen-md mx-auto px-4 pb-16 mt-10 gap-12 text-gray-600 md:px-8">
+		<div class="drop-shadow-2xl mb-2">
+			<button
+				on:click={() => {
+					goto(`/calendar/${item.calendarId}`);
+				}}
+				class="drop-shadow-xl w-full p-2 bg-black rounded-lg text-white font-bold"
+				>{item.calendarName} - {item.name}</button
+			>
+		</div>
+		<div class="drop-shadow-2xl">
+			<button
+				on:click={() => {
+					goto(`/calendar/${item.calendarId}`);
+				}}
+				class="drop-shadow-xl w-full p-2 bg-white border rounded-lg text-black font-bold"
+			>
+				{$page.params.day_id.slice(6, 8)} - {$page.params.day_id.slice(4, 6)} - {$page.params.day_id.slice(
+					0,
+					4
+				)}</button
+			>
+		</div>
 		<div
-			class="shadow-2xl max-w-screen-sm mx-auto border rounded-lg p-4 mt-10 mb-20 gap-12 text-gray-600"
+			class="shadow-2xl max-w-screen-sm mx-auto border rounded-lg p-4 mt-6 mb-20 gap-12 text-gray-600"
 		>
 			<div class="flex gap-4">
 				<div class="w-full">
 					<label for="" class=" text-sm font-bold text-gray-900">Name</label>
 
 					<input
+						autocomplete="nope"
 						type="text"
 						id="input-group-1"
-						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+						class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 						placeholder="John Name"
 					/>
 				</div>
@@ -84,9 +108,10 @@
 					<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
 
 					<input
+						autocomplete="nope"
 						type="text"
 						id="input-group-1"
-						class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+						class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 						placeholder="+421948 999 111"
 					/>
 				</div>
@@ -95,9 +120,10 @@
 				<label for="" class=" text-sm font-bold text-gray-900">Email</label>
 
 				<input
+					autocomplete="nope"
 					type="text"
 					id="input-group-1"
-					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+					class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 					placeholder="john.name@gmail.com"
 				/>
 			</div>
@@ -105,9 +131,10 @@
 				<label for="" class=" text-sm font-bold text-gray-900">Note</label>
 
 				<input
+					autocomplete="nope"
 					type="text"
 					id="input-group-1"
-					class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
+					class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
 					placeholder="I'm excited"
 				/>
 			</div>

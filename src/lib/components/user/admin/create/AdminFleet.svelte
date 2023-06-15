@@ -27,6 +27,7 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Name fleet</label>
 
 						<input
+							autocomplete="nope"
 							bind:value={data.name}
 							type="text"
 							id="input-group-1"

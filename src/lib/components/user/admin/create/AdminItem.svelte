@@ -42,6 +42,7 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Name item</label>
 
 						<input
+							autocomplete="nope"
 							bind:value={data.name}
 							type="text"
 							id="input-group-1"
@@ -53,6 +54,7 @@
 						<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
 
 						<input
+							autocomplete="nope"
 							bind:value={data.phone}
 							type="text"
 							id="input-group-1"

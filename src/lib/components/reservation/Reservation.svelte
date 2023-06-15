@@ -1,48 +1,73 @@
 <script>
 	import { goto } from '$app/navigation';
+
+	let currentStep = 4;
+	const steps = [{ item: 'What' }, { item: 'When' }, { item: 'Who' }];
 </script>
 
-<div class="shadow-3xl border rounded-lg max-w-sm w-full mb-28 sm:my-64 text-gray-600 mx-auto">
-	<div class=" rounded-lg p-8 space-y-4">
-		<div class="flex justify-center">
-			<a href="/home">
-				<h1
-					class="font-extrabold text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
-				>
-					Bespeak
-				</h1></a
-			>
-		</div>
+<div class="flex justify-center mt-10 mb-10">
+	<h1
+		class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
+	>
+		Bespeak
+	</h1>
+</div>
 
-		<div class="text-center">
-			<h3 class="text-gray-800 text-3xl font-bold sm:text-3xl">19:00 1/5/2024</h3>
-		</div>
-
-		<div class="relative">
-			<span class="block w-full h-px bg-gray-300" />
-			<p
-				class="inline-block text-gray-400 w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto"
+<div class="drop-shadow-xl max-w-4xl mx-auto px-0">
+	<ul aria-label="Steps" class="items-center text-gray-600 font-medium flex">
+		{#each steps as step, idx}
+			<li
+				aria-current={currentStep == idx + 1 ? 'step' : false}
+				class="drop-shadow-xl flex-col flex-1 gap-x-0"
 			>
-				Distributor info
-			</p>
-		</div>
-		<div class="text-center">
-			<h3 class="text-gray-700 text-md font-bold sm:text-md">Elit Barber Kosice</h3>
-			<h3 class="text-gray-700 text-2xl font-bold sm:text-2xl">Matej Baco</h3>
-			<h3 class="text-gray-700 text-xl font-bold sm:text-xl">0948363199</h3>
-		</div>
-		<div class="relative">
-			<span class="block w-full h-px bg-gray-300" />
-			<p
-				class="inline-block text-gray-400 w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto"
-			>
-				Customer info
-			</p>
-		</div>
-		<div class="text-center">
-			<h3 class="text-gray-600 text-md font-bold sm:text-md">Matus Fercak</h3>
-			<h3 class="text-gray-600 text-md font-bold sm:text-md">matusfercak@gmail.com</h3>
-			<h3 class=" text-black text-xl font-bold sm:text-xl">0948363199</h3>
-		</div>
-	</div>
+				<div class="flex items-center flex-row flex-1">
+					<hr
+						class={`w-full border block ${
+							idx == 0 ? 'border-none' : '' || currentStep >= idx + 1 ? 'border-gray-900' : ''
+						}`}
+					/>
+					<div
+						class={`w-8 h-8 rounded-full border-2 flex-none flex items-center justify-center ${
+							currentStep > idx + 1
+								? 'bg-gray-900 border-gray-900'
+								: '' || currentStep == idx + 1
+								? 'border-gray-900'
+								: ''
+						}`}
+					>
+						<span
+							class={`w-2.5 h-2.5 rounded-full bg-gray-900 ${
+								currentStep != idx + 1 ? 'hidden' : ''
+							}`}
+						/>
+						{#if currentStep > idx + 1}
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+								class="w-5 h-5 text-white"
+							>
+								<path d="M4.5 12.75l6 6 9-13.5" />
+							</svg>
+						{/if}
+					</div>
+					<hr
+						class={`border w-full h-auto ${
+							idx + 1 == steps.length
+								? 'border-none'
+								: '' || currentStep > idx + 1
+								? 'border-gray-900'
+								: ''
+						}`}
+					/>
+				</div>
+				<div class=" flex justify-center items-center mt-3 h-auto">
+					<h3 class={`text-sm ${currentStep == idx + 1 ? 'text-gray-900' : ''}`}>
+						{step.item}
+					</h3>
+				</div>
+			</li>
+		{/each}
+	</ul>
 </div>

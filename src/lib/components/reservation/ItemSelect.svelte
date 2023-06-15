@@ -65,8 +65,8 @@
 	</ul>
 </div>
 
-<section>
-	<div class=" max-w-screen-md mx-auto px-4 pb-28 mt-10 gap-12 text-gray-600 md:px-8">
+<section class="max-w-screen-sm mx-auto">
+	<div class=" max-w-screen-md mx-auto px-4 pb-28 mt-10 gap-12 text-gray-600 sm:px-0">
 		<ul class=" grid gap-4 sm:grid-cols-2">
 			{#each items as item}
 				<button

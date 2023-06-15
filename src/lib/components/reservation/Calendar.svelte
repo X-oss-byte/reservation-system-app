@@ -94,7 +94,7 @@
 
 <section>
 	<div class=" max-w-screen-md mx-auto px-4 pb-16 mt-10 gap-12 text-gray-600 md:px-8">
-		<div class="drop-shadow-2xl">
+		<div class="max-w-screen-sm mx-auto drop-shadow-xg mb-2">
 			<button
 				on:click={() => {
 					goto(`/calendar/${item.calendarId}`);
@@ -105,7 +105,7 @@
 		</div>
 
 		<div
-			class="shadow-3xl border border-lg rounded-lg max-w-screen-xl mx-auto container p-4 mb-10 mt-5"
+			class="max-w-screen-sm mx-auto shadow-3xl border border-lg rounded-lg container p-4 mb-10 mt-5"
 		>
 			<div class="flex justify-between">
 				<button
@@ -179,7 +179,7 @@
 								{day.dayNumber}
 							</button>
 						{:else if item[`${dayWeekTranslate[day.dayIndex]}`]}
-							{#if !item.reservedDates.includes(day.daID)}
+							{#if !item.reservedDates.includes(day.dayID)}
 								<button
 									on:click={() => {
 										goto(`/calendar/${$page.params.fleet_id}/${$page.params.item_id}/${day.dayID}`);

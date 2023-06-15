@@ -1,9 +1,20 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { AppriteReservationService } from '$lib/modules/appwrite/AppwriteService';
 	export let item: any;
 	let currentStep = 3;
 	const steps = [{ item: 'What' }, { item: 'When' }, { item: 'Who' }];
+	let information: any = {
+		contactName: undefined,
+		contactEmail: undefined,
+		contactPhone: undefined,
+		contactNote: undefined,
+		calendarId: $page.params.fleet_id,
+		slotTypeId: $page.params.item_id,
+		reservedAt: $page.params.day_id,
+		userId: item.userId
+	};
 </script>
 
 <div class="drop-shadow-xl max-w-4xl mx-auto px-0">
@@ -67,7 +78,7 @@
 
 <section>
 	<div class=" max-w-screen-md mx-auto px-4 pb-16 mt-10 gap-12 text-gray-600 md:px-8">
-		<div class="drop-shadow-2xl mb-2">
+		<div class="max-w-screen-sm mx-auto drop-shadow-lg mb-2">
 			<button
 				on:click={() => {
 					goto(`/calendar/${item.calendarId}`);
@@ -76,10 +87,10 @@
 				>{item.calendarName} - {item.name}</button
 			>
 		</div>
-		<div class="drop-shadow-2xl">
+		<div class="max-w-screen-sm mx-auto drop-shadow-lg">
 			<button
 				on:click={() => {
-					goto(`/calendar/${item.calendarId}`);
+					goto(`/calendar/${item.calendarId}/${item.$id}`);
 				}}
 				class="drop-shadow-xl w-full p-2 bg-white border rounded-lg text-black font-bold"
 			>
@@ -98,6 +109,7 @@
 
 					<input
 						autocomplete="nope"
+						bind:value={information.contactName}
 						type="text"
 						id="input-group-1"
 						class="bg-gray-50 border form-input border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-600 focus:border-black block w-full p-2.5"
@@ -108,6 +120,7 @@
 					<label for="" class=" text-sm font-bold text-gray-900">Phone number</label>
 
 					<input
+						bind:value={information.contactPhone}
 						autocomplete="nope"
 						type="text"
 						id="input-group-1"
@@ -120,6 +133,7 @@
 				<label for="" class=" text-sm font-bold text-gray-900">Email</label>
 
 				<input
+					bind:value={information.contactEmail}
 					autocomplete="nope"
 					type="text"
 					id="input-group-1"
@@ -131,6 +145,7 @@
 				<label for="" class=" text-sm font-bold text-gray-900">Note</label>
 
 				<input
+					bind:value={information.contactNote}
 					autocomplete="nope"
 					type="text"
 					id="input-group-1"
@@ -140,9 +155,9 @@
 			</div>
 			<button
 				on:click={() => {
-					goto('/calendar/111/12032023/1234/final');
+					AppriteReservationService.createReservation(information);
 				}}
-				class="border-2 w-full border-black rounded-lg p-1 mt-4 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-gray-800 disabled:border-gray-700 disabled:bg-gray-600"
+				class="border-2 w-full border-black rounded-lg p-1 mt-4 text-black font-bold bg-white hover:-translate-y hover:bg-gray-200 disabled:border-gray-700 disabled:bg-gray-600"
 				>Create reservation</button
 			>
 		</div>

@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { each } from 'svelte/internal';
+
+	export let reservations: any;
+	let toDeleteId;
 	let toDelete = false;
 </script>
 
@@ -52,124 +56,32 @@
 		</div>
 		<div class="mb-10">
 			<ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-				<li class="bg-gray-200 shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
+				{#each reservations as reservation}
+					<li class="shadow-md border rounded-lg">
+						<div class="flex items-center justify-between p-4">
+							<div class="space-y-2">
+								<h4 class="text-gray-800 font-semibold">Barber</h4>
+								<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
+							</div>
+							<button
+								on:click={() => {
+									toDelete = true;
+									toDeleteId = reservation.$id;
+								}}
+							>
+								<svg
+									class="hover:fill-[#8B0000]"
+									xmlns="http://www.w3.org/2000/svg"
+									width="24"
+									viewBox="0 0 24 24"
+									><path
+										d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
+									/></svg
+								></button
+							>
 						</div>
-						<button
-							on:click={() => {
-								toDelete = true;
-							}}
-						>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
-				<li class="bg-gray-200 shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
-						</div>
-						<button>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
-				<li class="shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
-						</div>
-						<button>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
-				<li class="shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
-						</div>
-						<button>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
-				<li class="shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
-						</div>
-						<button>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
-				<li class="shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 font-semibold">Barber</h4>
-							<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
-						</div>
-						<button>
-							<svg
-								class="hover:fill-[#8B0000]"
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								viewBox="0 0 24 24"
-								><path
-									d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"
-								/></svg
-							></button
-						>
-					</div>
-				</li>
+					</li>
+				{/each}
 			</ul>
 		</div>
 	</div>

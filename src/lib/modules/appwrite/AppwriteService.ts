@@ -115,5 +115,52 @@ export const AppriteReservationService = {
 	getItem: async (itemID) => {
 		const promise = await databases.getDocument('main', 'calendarSlotTypes', itemID);
 		return promise;
+	},
+	createReservation: async (data) => {
+		let finalReservationID;
+		let slotReservation = await AppriteReservationService.getItem(data.slotTypeId);
+		const promise = await databases.updateDocument('main', 'calendarSlotTypes', data.slotTypeId, {
+			reservedDates: [...slotReservation.reservedDates, data.reservedAt]
+		});
+		const reservation = await databases.createDocument(
+			'main',
+			'calendarSlots',
+			`${data.reservedAt}${data.slotTypeId}`,
+			data
+		);
+		goto(`/final/${reservation.$id}`);
+	},
+	getReservation: async (reservationID) => {
+		let reservation = await databases.getDocument('main', 'calendarSlots', reservationID);
+		return {
+			reservation: reservation,
+			fleet: await databases.getDocument('main', 'calendars', reservation.calendarId),
+			item: await databases.getDocument('main', 'calendarSlotTypes', reservation.slotTypeId)
+		};
+	},
+	reviewRedirect: async (reservationID) => {
+		if (await AppwriteAuthServices.fetchAccount()) {
+			goto('/customer');
+		} else {
+			goto(`/reservation/${reservationID}`);
+		}
+	},
+	listCustomerReservation: async () => {
+		const user = await account.get();
+		const promise = await databases.listDocuments('main', 'calendarSlots', [
+			Query.equal('contactEmail', user.email),
+			Query.limit(100),
+			Query.offset(0)
+		]);
+		return promise.documents;
+	},
+	listAdminReservation: async () => {
+		const user = await account.get();
+		const promise = await databases.listDocuments('main', 'calendarSlots', [
+			Query.equal('userId', user.$id),
+			Query.limit(100),
+			Query.offset(0)
+		]);
+		return promise.documents;
 	}
 };

@@ -74,7 +74,7 @@
 			<div class="text-center">
 				<h3 class="text-2xl text-black font-bold">Do you want continue as ?</h3>
 			</div>
-			<div class="relative">
+			<!-- <div class="relative">
 				<span class="block w-full h-px my-8 bg-gray-300" />
 				<p class="inline-block w-fit text-sm bg-white px-2 absolute -top-2 inset-x-0 mx-auto">
 					Guest
@@ -88,7 +88,7 @@
 					class="w-full flex items-center justify-center gap-x-3 py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100"
 					>Continue as Guest</button
 				>
-			</div>
+			</div> -->
 
 			<div class="relative">
 				<span class="block w-full h-px my-8 bg-gray-300" />

@@ -60,8 +60,12 @@
 					<li class="shadow-md border rounded-lg">
 						<div class="flex items-center justify-between p-4">
 							<div class="space-y-2">
-								<h4 class="text-gray-800 font-semibold">Barber</h4>
-								<p class="text-gray-600 text-sm">17:00 15.2.2024</p>
+								<h4 class="text-gray-800 text-xl font-semibold">
+									{reservation.reservedAt.slice(6, 8)} - {reservation.reservedAt.slice(4, 6)} - {reservation.reservedAt.slice(
+										0,
+										4
+									)}
+								</h4>
 							</div>
 							<button
 								on:click={() => {

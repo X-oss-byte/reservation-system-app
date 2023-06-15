@@ -42,7 +42,7 @@
 								<ul class="flex justify-center space-x-4">
 									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
-											<a href="/">
+											<a href="https://github.com/MatusFercak/reservation-system-app">
 												<img
 													alt=""
 													src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
@@ -52,21 +52,21 @@
 									</div>
 									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
-											<a href="/">
+											<a href="https://twitter.com/fercakmatus">
 												<img alt="" src="https://cdn.cdnlogo.com/logos/t/96/twitter-icon.svg" />
 											</a>
 										</li>
 									</div>
 									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
-											<a href="/">
+											<a href="https://sk.linkedin.com/in/matúš-ferčák-4ba51a212">
 												<img alt="" src="https://www.svgrepo.com/show/110195/linkedin.svg" />
 											</a>
 										</li>
 									</div>
 									<div class="grayscale-[80%] hover:grayscale-0">
 										<li class="w-10 h-10 border rounded-full flex items-center justify-center">
-											<a href="/">
+											<a href="https://www.facebook.com/matus.fercak/?locale=sk_SK">
 												<img
 													alt=""
 													src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/2048px-Facebook_f_logo_%282021%29.svg.png"

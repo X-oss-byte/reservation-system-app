@@ -2,7 +2,7 @@
 	<h1
 		class="font-extrabold text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000]"
 	>
-		Bespeakd
+		Bespeak
 	</h1>
 </div>
 

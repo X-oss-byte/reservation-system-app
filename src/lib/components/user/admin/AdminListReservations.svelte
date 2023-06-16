@@ -14,27 +14,29 @@
 		</div>
 		<ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			{#each reservations as reservation}
-				<li class="shadow-md border rounded-lg">
-					<div class="flex items-center justify-between p-4">
-						<div class="space-y-2">
-							<h4 class="text-gray-800 text-2xl font-semibold">
-								{reservation.reservedAt.slice(6, 8)} - {reservation.reservedAt.slice(4, 6)} - {reservation.reservedAt.slice(
-									0,
-									4
-								)}
-							</h4>
-							<h4 class="text-gray-800 text-xl font-bold">
-								{reservation.contactName}
-							</h4>
-							<h4 class="text-gray-800 text-xl">
-								{reservation.contactEmail}
-							</h4>
-							<h4 class="text-blue-300 text-xl font-semibold mt-10">
-								<a href="tel: {reservation.contactPhone}">{reservation.contactPhone}</a>
-							</h4>
+				<a href="/admin/reservation/{reservation.$id}">
+					<li class="shadow-md border rounded-lg">
+						<div class="flex items-center justify-between p-4">
+							<div class="space-y-2">
+								<h4 class="text-gray-800 text-2xl font-semibold">
+									{reservation.reservedAt.slice(6, 8)} - {reservation.reservedAt.slice(4, 6)} - {reservation.reservedAt.slice(
+										0,
+										4
+									)}
+								</h4>
+								<h4 class="text-gray-800 text-xl font-bold">
+									{reservation.contactName}
+								</h4>
+								<h4 class="text-gray-800 text-xl">
+									{reservation.contactEmail}
+								</h4>
+								<h4 class="text-blue-300 text-xl font-semibold mt-10">
+									<a href="tel: {reservation.contactPhone}">{reservation.contactPhone}</a>
+								</h4>
+							</div>
 						</div>
-					</div>
-				</li>
+					</li>
+				</a>
 			{/each}
 		</ul>
 	</div>

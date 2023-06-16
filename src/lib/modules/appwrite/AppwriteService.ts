@@ -162,5 +162,23 @@ export const AppriteReservationService = {
 			Query.offset(0)
 		]);
 		return promise.documents;
+	},
+	removeReservation: async (reservationOBJ, reservationID, itemID, admin = false) => {
+		let slotReservation = await AppriteReservationService.getItem(itemID);
+		const promiseItem = await databases.updateDocument('main', 'calendarSlotTypes', itemID, {
+			reservedDates: slotReservation.reservedDates.filter((obj) => {
+				return obj !== reservationOBJ.reservedAt;
+			})
+		});
+		const promiseReservation = await databases.deleteDocument(
+			'main',
+			'calendarSlots',
+			reservationID
+		);
+		if (admin) {
+			goto('/admin/reservations');
+		} else {
+			goto('/customer');
+		}
 	}
 };

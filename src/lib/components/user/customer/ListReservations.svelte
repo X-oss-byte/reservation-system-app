@@ -57,17 +57,18 @@
 		<div class="mb-10">
 			<ul class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
 				{#each reservations as reservation}
-					<li class="shadow-md border rounded-lg">
-						<div class="flex items-center justify-between p-4">
-							<div class="space-y-2">
-								<h4 class="text-gray-800 text-xl font-semibold">
-									{reservation.reservedAt.slice(6, 8)} - {reservation.reservedAt.slice(4, 6)} - {reservation.reservedAt.slice(
-										0,
-										4
-									)}
-								</h4>
-							</div>
-							<!-- <button
+					<a href="/customer/reservation/{reservation.$id}">
+						<li class="shadow-md border rounded-lg">
+							<div class="flex items-center justify-between p-4">
+								<div class="space-y-2">
+									<h4 class="text-gray-800 text-xl font-semibold">
+										{reservation.reservedAt.slice(6, 8)} - {reservation.reservedAt.slice(4, 6)} - {reservation.reservedAt.slice(
+											0,
+											4
+										)}
+									</h4>
+								</div>
+								<!-- <button
 								on:click={() => {
 									toDelete = true;
 									toDeleteId = reservation.$id;
@@ -83,8 +84,9 @@
 									/></svg
 								></button
 							> -->
-						</div>
-					</li>
+							</div>
+						</li></a
+					>
 				{/each}
 			</ul>
 		</div>

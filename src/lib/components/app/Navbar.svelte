@@ -18,15 +18,6 @@
 				</h1>
 			</a>
 			<div class="md:hidden flex items-center">
-				{#if stateNavbar}
-					<button
-						on:click={() => {
-							goto('/login');
-						}}
-						class="border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
-						>Login</button
-					>
-				{/if}
 				<button
 					on:click={() => {
 						changeStateNavbar();
@@ -62,36 +53,13 @@
 			{@const hidden = !stateNavbar ? 'hidden' : ''}
 			<div class="{hidden} sm:block flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0">
 				<ul class="justify-center items-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-					<li
-						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000] duration-500"
+					<button
+						on:click={() => {
+							goto('/login');
+						}}
+						class="w-full border-2 block sm:hidden border-black rounded-lg p-1 px-8 text-white font-bold bg-black hover:-translate-y hover:text-white hover:bg-black"
+						>Login</button
 					>
-						<button
-							on:click={() => {
-								navigationStore.set({ index: 0, page: 'home' });
-								goto('/home');
-							}}>Home</button
-						>
-					</li>
-					<li
-						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#8B0000] duration-500"
-					>
-						<button
-							on:click={() => {
-								navigationStore.set({ index: 1, page: 'about' });
-								goto('/about');
-							}}>About</button
-						>
-					</li>
-					<li
-						class="font-bold transition ease-in-out hover:-translate-y-1 hover:text-transparent bg-clip-text bg-gradient-to-r from-[#8B0000] to-[#000000] duration-500"
-					>
-						<button
-							on:click={() => {
-								navigationStore.set({ index: 2, page: 'vision' });
-								goto('/vision');
-							}}>Vision</button
-						>
-					</li>
 				</ul>
 			</div>
 		{/if}
@@ -100,7 +68,7 @@
 			on:click={() => {
 				goto('/login');
 			}}
-			class="hidden md:block border-2 border-black rounded-lg p-1 px-8 transition duration-500 ease-in-out text-black font-bold bg-white hover:-translate-y hover:text-white hover:bg-black"
+			class="hidden md:block border-2 border-black rounded-lg p-1 px-8 text-white font-bold bg-black"
 			>Login</button
 		>
 	</div>

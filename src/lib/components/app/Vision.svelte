@@ -1,7 +1,7 @@
 <section>
-	<div class=" max-w-screen-xl mx-auto px-4 pt-14 pb-28 gap-12 text-gray-600 md:px-8">
+	<div class=" max-w-screen-xl mx-auto px-4 pb-28 gap-12 text-gray-600 md:px-8">
 		<div class="space-y-5 max-w-4xl mx-auto text-center">
-			<h2 class="text-4xl text-gray-800 font-extrabold mx-auto mb-10 md:text-5xl">
+			<h2 class="text-2xl text-gray-800 font-extrabold mx-auto mb-4 md:text-3xl">
 				<span>What's my vision?</span>
 			</h2>
 		</div>
@@ -9,7 +9,7 @@
 			<div class="max-w-3xl mx-auto text-center">
 				<figure>
 					<blockquote>
-						<p class="text-gray-800 text-xl font-semibold sm:text-2xl">
+						<p class="text-gray-800 text-xl sm:text-2xl">
 							“In today's fast-paced world, efficient reservation systems have become indispensable
 							for numerous businesses and organizations. From restaurants to hotels, fitness centers
 							to event venues, the ability to streamline the booking process is crucial. This is
